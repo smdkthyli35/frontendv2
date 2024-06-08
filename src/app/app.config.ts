@@ -5,13 +5,15 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { errorHandlerInterceptor } from './core/interceptors/error-handler.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(withInterceptors([
       loadingInterceptor,
-      authInterceptor
+      authInterceptor,
+      errorHandlerInterceptor
     ]))
   ]
 };
